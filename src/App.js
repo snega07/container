@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+  
+const App = () => {
+ 
+    const options = [
+   
+      { label: 'orange', value: 'orange' },
+   
+      { label: 'blue', value: 'blue' },
+   
+      { label: 'lime', value: 'lime' },
 
-function App() {
+      { label: 'pink', value: '#c155ac' },
+   
+    ];
+
+    const [value, setValue] = React.useState('orange');
+
+ const handleChange = (event) => {
+
+   setValue(event.target.value);
+
+ };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='center'>
+
+    <label>
+
+      Pick a colour?
+
+      <select value={value} onChange={handleChange}>
+
+        {options.map((option) => (
+
+          <option value={option.value}>{option.label}</option>
+
+        ))}
+
+      </select>
+
+    </label>
+  
+  
+    <Container maxWidth="sm">
+      <Typography component="div" style={{ 
+        backgroundColor: value, height: '40vh', border: '2px solid black', borderRadius: '5vh'
+      }}>
+       
+      </Typography>
+    </Container>
     </div>
   );
 }
-
-export default App;
+  
+export default App
